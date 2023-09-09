@@ -1,82 +1,117 @@
 package day_two;
-import java.io.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class day_two {
+    // Loss = 0;
+    // Draw = 3;
+    // Win = 6;
 
-        // A, X = ROCK
-        // B, Y = PAPER
-        // C, Z = SCISSORS
-        // ROCK 1 POINT
-        // PAPER 2 POINTS
-        // SCISSCORS 3 POINTS
-        // 0 POINTS LOSS
-        // 3 POINTS DRAW
-        // 6 POINTS WIN
+    // Rock = 1
+    // Paper = 2
+    // Scissors = 3
+    private static HashMap<String, Integer> results = new HashMap<>();
+    private static HashMap<String, String> strategy = new HashMap<>();
 
-    static int rock = 1;
-    static int paper = 2;
-    static int scissors = 3;
-    static int win = 6;
-    static int draw = 3;
-    
+    private static void initMaps() {
+        // A = rock
+        // B = paper
+        // C = scissors
 
-    public static int checkVal(String st){
-        // DRAW ROCK VS ROCK
-           if(st.equals("A X")){
-            return (3 + 1);
-           }
-           // LOSS ROCK VS SCISSORS
-           if(st.equals("A Z")){
-            return 3;
-           }
-           // WIN ROCK VS PAPER
-           if(st.equals("A Y")){
-            return (6 + 2);
-           }
+        // X = rock
+        // Y = paper
+        // Z = scissors
 
+        // for when they pick rock
+        results.put("A X", 4);
+        results.put("A Y", 8);
+        results.put("A Z", 3);
 
-           // DRAW PAPER VS PAPER
-           if(st.equals("B Y")){
-            return (3 + 2);
-           }
-           // WIN PAPER VS SCISSORS
-           if(st.equals("C Y")){
-            return (6 + 3);
-           }
-           // LOSS PAPER VS ROCK
-           if(st.equals("B X")){
-            return 1;
-           }
+        // for when they pick paper
+        results.put("B X", 1);
+        results.put("B Y", 5);
+        results.put("B Z", 9);
 
+        // for when they pick scissors
+        results.put("C X", 7);
+        results.put("C Y", 2);
+        results.put("C Z", 6);
 
-           // DRAW SCISSORS VS SCISSORS
-           if(st.equals("C Z")){
-            return (3 + 3);
-           }
-           // WIN SCISSORS VS ROCK
-           if(st.equals("C X")){
-            return (6 + 1);
-           }
-           // LOSS SCISSORS VS PAPER
-           if(st.equals("C Y")){
-            return 2;
-           }
-           
-        return 0;
+        // for when they pick Rock
+        strategy.put("A X", "A Z");
+        strategy.put("A Y", "A X");
+        strategy.put("A Z", "A Y");
+
+        // for when they pick paper
+        strategy.put("B X", "B X");
+        strategy.put("B Y", "B Y");
+        strategy.put("B Z", "B Z");
+
+        // for when they pick scissors
+        strategy.put("C X", "C Y");
+        strategy.put("C Y", "C Z");
+        strategy.put("C Z", "C X");
     }
 
-    public static void main(String[] args) throws Exception
-    {
-        int sum = 0;
-        String filePath = "day_two/data/input.txt";
-        File file = new File(filePath);
-        Scanner scr = new Scanner(file);
-        while(scr.hasNextLine()){
-            String st = scr.nextLine();
-            sum += checkVal(st);
+    private static void part1() {
+        String path = "day_two/data/input.txt";
+        File file = new File(path);
+
+        Scanner scr;
+
+        try {
+            scr = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
-        System.out.println(sum);  
-            
+
+        int totalScore = 0;
+
+        while (scr.hasNextLine()) {
+
+            String s = scr.nextLine();
+            totalScore += results.get(s);
+
+        }
+
+        System.out.println(totalScore);
+        scr.close();
+    }
+
+    private static void part2() {
+        String path = "day_two/data/input.txt";
+        File file = new File(path);
+
+        Scanner scr;
+
+        try {
+            scr = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        int totalScore = 0;
+
+        while (scr.hasNextLine()) {
+
+            String s = scr.nextLine();
+            s = strategy.get(s);
+            totalScore += results.get(s);
+
+        }
+
+        System.out.println(totalScore);
+        scr.close();
+    }
+
+    public static void main(String[] args) {
+
+        initMaps();
+        part1();
+        part2();
+
     }
 }
