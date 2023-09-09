@@ -53,5 +53,4 @@ public class day_six {
         LookForMarker(4);
         LookForMarker(14);
     }
-    
 }
