@@ -46,6 +46,7 @@ public class day_six {
                     }
                 }   
             }
+            marker.clear();
     }
 
     public static void main(String[] args) {
