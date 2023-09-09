@@ -15,6 +15,10 @@ public class day_two {
     // Scissors = 3
     private static HashMap<String, Integer> results = new HashMap<>();
     private static HashMap<String, String> strategy = new HashMap<>();
+    static String filePath = "AdventOfCode2022/day_two/data/input.txt";
+    static File file = new File(filePath);
+    static Scanner scr;
+    static String st;
 
     private static void initMaps() {
         // A = rock
@@ -57,11 +61,6 @@ public class day_two {
     }
 
     private static void part1() {
-        String path = "day_two/data/input.txt";
-        File file = new File(path);
-
-        Scanner scr;
-
         try {
             scr = new Scanner(file);
         } catch (FileNotFoundException e) {
@@ -71,22 +70,14 @@ public class day_two {
         int totalScore = 0;
 
         while (scr.hasNextLine()) {
-
-            String s = scr.nextLine();
-            totalScore += results.get(s);
-
+            st = scr.nextLine();
+            totalScore += results.get(st);
         }
-
         System.out.println(totalScore);
         scr.close();
     }
 
     private static void part2() {
-        String path = "day_two/data/input.txt";
-        File file = new File(path);
-
-        Scanner scr;
-
         try {
             scr = new Scanner(file);
         } catch (FileNotFoundException e) {
@@ -96,22 +87,17 @@ public class day_two {
         int totalScore = 0;
 
         while (scr.hasNextLine()) {
-
-            String s = scr.nextLine();
-            s = strategy.get(s);
-            totalScore += results.get(s);
-
+            st = scr.nextLine();
+            st = strategy.get(st);
+            totalScore += results.get(st);
         }
-
         System.out.println(totalScore);
         scr.close();
     }
 
     public static void main(String[] args) {
-
         initMaps();
         part1();
         part2();
-
     }
 }

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class day_four {
 
-    static String filePath = "day_four/data/input.txt";
+    static String filePath = "AdventOfCode2022/day_four/data/input.txt";
     static File file = new File(filePath);
     static Scanner scr;
     static String st;

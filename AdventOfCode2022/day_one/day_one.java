@@ -3,7 +3,7 @@ import java.io.*;
 public class day_one {
     public static void main(String[] args) throws Exception
     {
-        String filePath = "day_one/data/input.txt";
+        String filePath = "AdventOfCode2022/day_one/data/input.txt";
         File file = new File(filePath);
 
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -37,8 +37,7 @@ public class day_one {
         System.out.println(first);
         System.out.println(second);
         System.out.println(third);
-        int sum = first + second + third;
-        System.out.println(sum);
+        System.out.println(first+second+third);
 
         br.close();
             

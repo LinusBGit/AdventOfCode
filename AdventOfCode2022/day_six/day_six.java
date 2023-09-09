@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class day_six {
-    static String filePath = "day_six/data/input.txt";
+    static String filePath = "AdventOfCode2022/day_six/data/input.txt";
     static File file = new File(filePath);
     static Scanner scr;
     static String st;
@@ -41,7 +41,6 @@ public class day_six {
                     }
                 }   
             }
-
     }
 
     public static void main(String[] args) {
