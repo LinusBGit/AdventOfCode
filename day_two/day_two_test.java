@@ -1,6 +1,6 @@
 package day_two;
 import java.io.File;
-import java.io.FileNotFoundException; import java.util.ArrayList; import java.util.HashMap; import java.util.Scanner;
+import java.io.FileNotFoundException; import java.util.HashMap; import java.util.Scanner;
 public class day_two_test {
 // Loss = 0;
 // Draw = 3;
