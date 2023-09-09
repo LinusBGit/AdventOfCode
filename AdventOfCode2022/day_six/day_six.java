@@ -12,6 +12,11 @@ public class day_six {
     static ArrayList<Character> marker;
 
     public static void LookForMarker(int markerLength) {
+        try {
+            scr = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         while (scr.hasNextLine()) {
             st = scr.nextLine();
             int count = 0;
