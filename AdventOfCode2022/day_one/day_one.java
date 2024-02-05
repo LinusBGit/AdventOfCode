@@ -3,7 +3,7 @@ import java.io.*;
 public class day_one {
     public static void main(String[] args) throws Exception
     {
-        String filePath = "AdventOfCode2022/day_one/data/input.txt";
+        String filePath = "day_one/data/input.txt";
         File file = new File(filePath);
 
         BufferedReader br = new BufferedReader(new FileReader(file));

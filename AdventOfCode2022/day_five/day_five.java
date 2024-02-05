@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class day_five {
 
-    static String filePath = "AdventOfCode2022/day_five/data/input.txt";
+    static String filePath = "day_five/data/input.txt";
     static File file = new File(filePath);
     static Scanner scr;
     static String st;

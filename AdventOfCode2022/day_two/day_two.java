@@ -15,7 +15,7 @@ public class day_two {
     // Scissors = 3
     private static HashMap<String, Integer> results = new HashMap<>();
     private static HashMap<String, String> strategy = new HashMap<>();
-    static String filePath = "AdventOfCode2022/day_two/data/input.txt";
+    static String filePath = "day_two/data/input.txt";
     static File file = new File(filePath);
     static Scanner scr;
     static String st;

@@ -12,7 +12,7 @@ public class day_three {
     // Find the item type that appears in both compartments and sum the total priority
 
     private static HashMap<Character, Integer> priority = new HashMap<>();
-    static String filePath = "AdventOfCode2022/day_three/data/input.txt";
+    static String filePath = "day_three/data/input.txt";
     static File file = new File(filePath);
     static Scanner scr;
     static String st;
