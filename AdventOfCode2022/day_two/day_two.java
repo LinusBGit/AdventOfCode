@@ -20,6 +20,7 @@ public class day_two {
     static Scanner scr;
     static String st;
 
+    // Method to initiate the hashmaps
     private static void initMaps() {
         // A = rock
         // B = paper

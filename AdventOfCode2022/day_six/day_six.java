@@ -11,6 +11,7 @@ public class day_six {
     static String st;
     static ArrayList<Character> marker;
 
+    // Method that looks for input parameter value markerLength unique characters in a row
     public static void LookForMarker(int markerLength) {
         try {
             scr = new Scanner(file);
@@ -22,9 +23,11 @@ public class day_six {
             int count = 0;
             int dupe = 0;
             marker = new ArrayList<Character>();
+            // Add characters to ArrayList until it reaches input parameter value markerLength
                 for (int i = 0; i < st.length(); i++){
                     marker.add(st.charAt(i));
                     count++;
+                    // Once it reaches markerLength value check for duplicate characters
                     if(count >= markerLength){
                         dupeLoop:
                             for(int j = 0; j < markerLength; j++){
@@ -35,9 +38,12 @@ public class day_six {
                                     }
                                 }
                             }
+                        // If duplicate characters were found
                         if(dupe > 0){
                             marker.remove(0);
-                        } else { 
+                        } 
+                        // If no duplicate characters were found
+                        else { 
                             System.out.println(marker);
                             System.out.println("First marker is at position: " + count);
                             break;

@@ -17,6 +17,7 @@ public class day_three {
     static Scanner scr;
     static String st;
 
+// Method to initiate all hashmaps
 private static void initMaps(){
     // Lower case
     priority.put('a', 1);
@@ -74,6 +75,7 @@ private static void initMaps(){
     priority.put('Z', 52);
 }
 
+// First part of the challenge
 public static void part1(){
     try{
         scr = new Scanner(file);
@@ -85,9 +87,12 @@ public static void part1(){
     while (scr.hasNextLine())
     {
         st = scr.nextLine();
+        // Outerloop iterates through the first half of the list of contents
         outerloop:
         for(int i = 0; i < (st.length()/2); i++){
+            // Innterloop iterates throught the second half of the list of contents
             for(int j = st.length()/2; j < st.length(); j++){
+                // If there is a character match between the two halves add that character's priority to the total
                 if(st.charAt(i) == st.charAt(j)){
                     totalPriority += priority.get(st.charAt(i));
                     break outerloop;
@@ -99,6 +104,7 @@ public static void part1(){
     scr.close();
 }
 
+// Second part of the challenge
 public static void part2(){
     try{
         scr = new Scanner(file);
@@ -111,12 +117,18 @@ public static void part2(){
     while (scr.hasNextLine())
     {
         st = scr.nextLine();
+        // If the ArrayList does not have three lines yet add to the array
         if(groupRucksack.size() < 3) groupRucksack.add(st.toCharArray());
+        // If the ArrayList contains three lines
         if (groupRucksack.size() == 3){
+            // X iterates through the length of the first line
+            // Y iterates through the length of the second line
+            // Z iterates through the length of the third line
             outerloop:
             for(int x = 0; x < groupRucksack.get(0).length; x++){
                 for(int y = 0; y < groupRucksack.get(1).length; y++){
                     for(int z = 0; z < groupRucksack.get(2).length; z++){
+                        // If there is a corresponding match in all three lines then add the character's priority to the total, clear the array and break the loop
                         if(groupRucksack.get(0)[x] == groupRucksack.get(1)[y] && groupRucksack.get(0)[x] == groupRucksack.get(2)[z]){
                             totalPriority += priority.get(groupRucksack.get(0)[x]);
                             groupRucksack.remove(2);

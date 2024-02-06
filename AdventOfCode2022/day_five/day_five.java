@@ -22,6 +22,7 @@ public class day_five {
     private static Stack<Character> stackEight = new Stack<Character>();
     private static Stack<Character> stackNine = new Stack<Character>();
 
+    // Method to initiate all hashmaps
     private static void initMaps() {
         map.put('1', stackOne);
         map.put('2', stackTwo);
@@ -34,6 +35,7 @@ public class day_five {
         map.put('9', stackNine);
     }
 
+    // Method to initiate all stacks
     private static void initStacks() {
         try {
             scr = new Scanner(file);
@@ -43,7 +45,9 @@ public class day_five {
         int count = 0;
         while (scr.hasNextLine()) {
             st = scr.nextLine();
+            // Only run below if-statement for the first couple of line iterations 
             if (count < 8) {
+                // If there is a character then push it into the stack
                 if (st.charAt(1) != ' ')
                     stackOne.push(st.charAt(1));
                 if (st.charAt(5) != ' ')
@@ -66,6 +70,8 @@ public class day_five {
             } else
                 break;
         }
+
+        // Reverse all the stacks
         reverse(stackOne);
         reverse(stackTwo);
         reverse(stackThree);
@@ -78,6 +84,7 @@ public class day_five {
         scr.close();
     }
 
+    // Method to reverse a stack
     public static void reverse(Stack<Character> st) {
         if (st.size() > 0) {
 
@@ -122,6 +129,7 @@ public class day_five {
         }
     }
 
+    // First part of the challenge
     public static void part1() {
         try {
             scr = new Scanner(file);
@@ -134,20 +142,26 @@ public class day_five {
         int count = 0;
         while (scr.hasNextLine()) {
             String test = scr.nextLine();
+            // Only run below if-statement after 11 line iterations 
             if (count >= 10) {
                 st = test;
+                // If index 6 is not empty then it is a double digit integer
                 if (st.charAt(6) != ' ') {
                     String temp = String.valueOf(Character.getNumericValue(st.charAt(5))) +
                             String.valueOf(Character.getNumericValue(st.charAt(6)));
                     amountToMove = Integer.parseInt(temp);
                     moveFrom = st.charAt(13);
                     moveTo = st.charAt(18);
-                } else {
+                } 
+                // If index 6 is empty then it is a single digit integer
+                else {
                     amountToMove = Character.getNumericValue(st.charAt(5));
                     moveFrom = st.charAt(12);
                     moveTo = st.charAt(17);
                 }
 
+                // Pop the stack that is to be moved from and push into the stack that is to be moved to
+                // Loop through this for as many times as amountToMove equals to
                 for (int i = 0; i < amountToMove; i++) {
                     map.get(moveTo).push(map.get(moveFrom).pop());
                 }
@@ -170,6 +184,7 @@ public class day_five {
         scr.close();
     }
 
+    // Method to clear all stacks
     public static void emptyStacks() {
         stackOne.clear();
         stackTwo.clear();
@@ -182,6 +197,7 @@ public class day_five {
         stackNine.clear();
     }
 
+    // Second part of the challenge
     public static void part2() {
         try {
             scr = new Scanner(file);
@@ -197,32 +213,41 @@ public class day_five {
             String test = scr.nextLine();
             if (count >= 10) {
                 st = test;
+                // If index 6 is not empty then it is a double digit integer
                 if (st.charAt(6) != ' ') {
                     String temp = String.valueOf(Character.getNumericValue(st.charAt(5))) +
                             String.valueOf(Character.getNumericValue(st.charAt(6)));
                     amountToMove = Integer.parseInt(temp);
                     moveFrom = st.charAt(13);
                     moveTo = st.charAt(18);
-                } else {
+                } 
+                // If index 6 is empty then it is a single digit integer
+                else {
                     amountToMove = Character.getNumericValue(st.charAt(5));
                     moveFrom = st.charAt(12);
                     moveTo = st.charAt(17);
                 }
 
+                // If moving multiple crates
                 if (amountToMove > 1) {
+                    // Using a temporary stack to store the values
                     for (int i = 0; i < amountToMove; i++)
                         tempStack.push(map.get(moveFrom).pop());
 
+                    // Pop the temporary stack and push into the correct receiving stack
                     for (int j = 0; j < amountToMove; j++)
                         map.get(moveTo).push(tempStack.pop());
 
-                } else
+                } 
+                // If moving a singular crate
+                else
                     map.get(moveTo).push(map.get(moveFrom).pop());
 
             } else
                 count++;
         }
 
+        // Print out the final answer which is the element on top of each of the stacks 
         String finalVal = "Final answer is: " +
                 (String.valueOf(stackOne.lastElement()) +
                         String.valueOf(stackTwo.lastElement()) +
@@ -246,6 +271,7 @@ public class day_five {
         emptyStacks();
         initStacks();
         part2();
+        emptyStacks();
     }
 
 }

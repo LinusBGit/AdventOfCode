@@ -3,7 +3,7 @@ import java.io.*;
 public class day_one {
     public static void main(String[] args) throws Exception
     {
-        String filePath = "day_one/data/input.txt";
+        String filePath = "data/input.txt";
         File file = new File(filePath);
 
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -14,6 +14,7 @@ public class day_one {
         while ((st = br.readLine()) != null)
         {
             if(st.isEmpty()){
+                // If greater than first - Using holder as a temp value to perform the swap
                 if(count>=first){
                     holder = second;
                     second = first;
@@ -21,12 +22,13 @@ public class day_one {
                     first = count;
                     count = 0;
                 } 
+                // If greater than or equal to second but smaller than first
                 else if(count>=second){
                     third = second;
                     second = count;
                     count = 0;
-                } 
-                else if(count>=third){
+                } // If greater than third but smaller than first and second
+                else if(count>third){
                     third = count;
                     count = 0;
                 } 
@@ -34,6 +36,7 @@ public class day_one {
             }
             else count += Integer.parseInt(st); 
         }
+        // Print out the elf carrying the most calories, second most calories, third most calories, and the sum of those three
         System.out.println(first);
         System.out.println(second);
         System.out.println(third);
